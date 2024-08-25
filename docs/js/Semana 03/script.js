@@ -47,14 +47,29 @@ do{
 
 let soma = 0;
 let salario = 0;
-for(let i = 0; i < 10; i++){
-  salario = parseFloat(prompt("Informe o salário: "));
+for(let i = 0; i < 2; i++){
+ // salario = parseFloat(prompt("Informe o salário: "));
   
   soma = soma + salario;
 }
-alert(soma);
+//alert(soma);
 
 //chinês:
 //soma = 0, 100
 //salario = 0, 100 
 //i = 0, 1
+
+function add(item){
+  const list = document.createElement('ul');
+  document.body.appendChild(list);
+
+  const li = document.createElement('li');
+  li.innerHTML = item;
+  list.appendChild(li);
+}
+
+function text(){
+  document.write('Parabens vc clicou! '+Date());
+}
+
+document.getElementById('btnJS').addEventListener('click',text);
