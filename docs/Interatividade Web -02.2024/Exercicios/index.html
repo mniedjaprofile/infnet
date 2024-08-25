@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--biblioteca de icones-->
+    <title>Praticando</title>
+</head>
+<body>
+
+    <h1>Dados de venda</h1>
+    <div class="venda">
+        <h2>Produto</h2>
+        <p id="produto-nome"></p>
+        <p id="produto-valor"></p>
+        <p id="produto-marca"></p>
+    </div>
+    <div class="venda">
+        <h2>Venda</h2>
+        <p id="venda-codigo"></p>
+        <p id="venda-data"></p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.write("Chamando class do objeto Car de um arquivo externo <br><br>");
+        document.write("Classe de Carros "+ "<br>");
+        let myNewCar = new Car("Hyundai","Creta","LV35C4","2020");
+        document.write(myNewCar.modelo + "<br>");
+        document.write(myNewCar.ano + "<br><br>");
+
+        document.write("Classe de animais"+ "<br>");
+        let myPet = new cachorro("Toby","falsiê");
+        document.write("A raca do meu pet é:  "+myPet.raca +"<br>");
+        document.write("O nome do meu pet é:  "+myPet.nome +"<br>");
+        document.write(myPet.toString() + "<br>");
+        document.write(myPet.fazerSom()+ "<br>");
+        document.write(myPet.latir()+ "<br><br><br>");
+    </script>
+  
+</body>
+</html>
