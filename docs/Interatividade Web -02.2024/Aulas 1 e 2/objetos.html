@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  
+    <title>Objetos JavaScript</title>
+</head>
+<body>
+   
+    <h2>Interatividade web - Aula 1 - 22/07/24</h2>
+
+    <h3>Problema 1</h3>
+    <p>⚫ Um professor deseja fazer um software no qual possa<br>
+        anotar as notas de todas as avaliações de suas disciplinas<br>
+        e verificar se os alunos tem uma boa média.<br>
+       ⚫ Que classes seriam necessárias para resolver o
+        problema acima?</p>
+    
+    <h3>Problema 2</h3>
+    <p>A secretaria de esportes do município de Balsas quer<br>
+        fazer um software que controle o campeonato de futebol<br>
+        daquele município. É necessário cadastrar todos os jogadores,<br>
+        equipes, jogos e placares dos jogos.
+    </p>
+
+    <p id="demo"></p>
+    
+    <h3>Referencias - Prof</h3>
+    <p id="ref1"></p>
+   
+    <h2>Interatividade web - Aula 2 - 24/07/24</h2>
+ 
+    <script src="/script.js"></script>
+    <script>
+        let persona1 = new Person("Carloss", "Maia Moraes", 36, "azul");
+        document.write("Person external <br>");
+        document.write(persona1.firstName + "<br>");
+        document.write(persona1.age + "<br><br>");
+
+        let myCar = new car("hyundai", "Creta");
+        document.write(myCar.modelo);
+
+     </script>
+
+ 
+</body>
+</html>
