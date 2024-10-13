@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GFI - Gestor Fácil de Incidentes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 class="title">Gestor Fácil de Incidentes</h1>
+
+        <!-- Formulário para cadastrar cliente -->
+        <div id="clienteForm" class="form-section">
+          <h2 class="form-title">Cadastrar Cliente</h2>
+          <form id="formClient">
+            <div class="form-group">
+              <label for="nomeCliente">Nome do Cliente</label>
+              <input type="text" id="nomeCliente" required />
+            </div>
+            <div class="form-group">
+              <label for="produtoCliente">Produto</label>
+              <select id="produtoCliente" required>
+                <option value="">Selecione um produto</option>
+                <option value="hardware">Hardware</option>
+                <option value="licenciamento">Licenciamento</option>
+                <option value="portal">Portal</option>
+                <option value="deploy">Esteira de deploy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="emailContato">E-mail</label>
+              <input type="email" id="emailContato" required />
+            </div>
+            <div class="form-group">
+              <label for="telefoneContato">Telefone</label>
+              <input type="text" id="telefoneContato" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Criar Registro</button>
+          </form>
+        </div>
+
+        <!-- Modal de confirmação -->
+        <div id="confirmarContatoModal" class="modal hide">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close-btn" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">Deseja criar um INCIDENTE para este cliente?</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" id="naoCriarIncidente">Não</button>
+              <button class="btn btn-primary" id="confirmarSim">Sim</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário para cadastrar incidente -->
+        <div id="incidenteForm" class="form-section hide">
+          <h2 class="form-title">Cadastrar Incidente</h2>
+          <form id="formIncidente">
+            <div class="form-group">
+              <label for="clienteIncidente">Cliente</label>
+              <select id="clienteIncidente" required>
+                <option value="">Selecione um cliente</option>
+                <!-- Carregado dinamicamente -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="descricaoIncidente">Descrição do Incidente</label>
+              <textarea id="descricaoIncidente" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="prioridadeIncidente">Prioridade</label>
+              <select id="prioridadeIncidente" required>
+                <option value="">Selecione a prioridade</option>
+                <option value="baixa">Baixa</option>
+                <option value="media">Média</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Criar Incidente</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
