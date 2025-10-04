@@ -1,0 +1,146 @@
+﻿@page
+@model EntidadeReserva.Pages.Shared._DetalhesPacoteModel
+@{
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="text-primary">@Model.Pacote.Nome</h2>
+            <p class="lead text-muted">@Model.Pacote.Destino</p>
+        </div>
+        <div class="text-end">
+            <span class="badge bg-success fs-6">@Model.Pacote.Categoria</span>
+            <span class="badge bg-info fs-6">@Model.Pacote.Duracao dias</span>
+            <div class="mt-2">
+                <span class="badge bg-warning text-dark fs-5">@Model.Pacote.PrecoFormatado</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Informações Principais -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📖 Descrição do Pacote</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-6">@Model.Pacote.Descricao</p>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-map-marker-alt text-success me-2 fs-5"></i>
+                                <div>
+                                    <strong>Destino</strong>
+                                    <p class="mb-0">@Model.Pacote.Destino</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-calendar-alt text-info me-2 fs-5"></i>
+                                <div>
+                                    <strong>Duração</strong>
+                                    <p class="mb-0">@Model.Pacote.Duracao dias</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações de Validade -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-clock text-warning me-2 fs-5"></i>
+                                <div>
+                                    <strong>Validade do Pacote</strong>
+                                    <p class="mb-0">
+                                        @Model.Pacote.Validade.ToString("dd/MM/yyyy")
+                                        @if (Model.Pacote.DiasAteExpirar > 0)
+                                        {
+                                            <span class="badge bg-success ms-2">
+                                                @Model.Pacote.DiasAteExpirar dias restantes
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger ms-2">Expirado</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar com Informações Técnicas -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📋 Informações do Pacote</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>🔖 ID do Pacote:</strong>
+                        <p class="mb-0">#@Model.Pacote.Id</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong>📅 Data de Criação:</strong>
+                        <p class="mb-0">@Model.Pacote.DataCriacao.ToString("dd/MM/yyyy")</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong>🏷️ Categoria:</strong>
+                        <p class="mb-0">@Model.Pacote.Categoria</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong>📊 Status:</strong>
+                        <p class="mb-0">
+                            @if (Model.Pacote.Ativo)
+                            {
+                                <span class="badge bg-success">✅ Ativo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">❌ Inativo</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ações -->
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🚀 Ações</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a asp-page="PacotesList" class="btn btn-outline-primary mb-2">
+                            📋 Voltar para Lista
+                        </a>
+
+                        @if (Model.EstaAtivo && Model.EstaValido)
+                        {
+                            <a asp-page="CreateReserva" asp-route-pacoteId="@Model.Pacote.Id"
+                               class="btn btn-success mb-2">
+                                🛒 Fazer Reserva
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success mb-2" disabled>
+                                🛒 Pacote Indisponível
+                            </button>
+                        }
+
+                        <a asp-page="EditPacoteTuristico" asp-route-id="@Model.Pacote.Id"
+                           class="btn btn-warning mb-2">
+                            ✏️ Editar Pacote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

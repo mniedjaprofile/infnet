@@ -1,0 +1,51 @@
+﻿@page
+@model EntidadeReserva.Pages.CreateReservaModel
+
+@{
+    ViewData["Title"] = "Nova Reserva";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Reserva.NomeCliente" class="form-label"></label>
+            <input asp-for="Reserva.NomeCliente" class="form-control" />
+            <span asp-validation-for="Reserva.NomeCliente" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Reserva.Email" class="form-label"></label>
+            <input asp-for="Reserva.Email" class="form-control" />
+            <span asp-validation-for="Reserva.Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Reserva.DataReserva" class="form-label"></label>
+            <input asp-for="Reserva.DataReserva" class="form-control" type="date" />
+            <span asp-validation-for="Reserva.DataReserva" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Reserva.QuantidadePessoas" class="form-label"></label>
+            <input asp-for="Reserva.QuantidadePessoas" class="form-control" />
+            <span asp-validation-for="Reserva.QuantidadePessoas" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Reserva.Observacoes" class="form-label"></label>
+            <textarea asp-for="Reserva.Observacoes" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Reserva.Observacoes" class="text-danger"></span>
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Cadastrar Reserva</button>
+            <a asp-page="/Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

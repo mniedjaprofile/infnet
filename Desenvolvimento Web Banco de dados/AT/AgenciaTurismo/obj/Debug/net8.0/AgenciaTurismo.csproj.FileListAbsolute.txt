@@ -1,0 +1,8 @@
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.AssemblyInfoInputs.cache
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.AssemblyInfo.cs
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.csproj.CoreCompileInputs.cache
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.RazorAssemblyInfo.cache
+C:\Users\supor\Documents\Faculdade\Disciplina Fundamentos  C#\AT\AgenciaTurismo\obj\Debug\net8.0\AgenciaTurismo.RazorAssemblyInfo.cs

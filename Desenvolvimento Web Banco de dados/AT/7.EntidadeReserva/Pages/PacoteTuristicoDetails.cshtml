@@ -1,0 +1,281 @@
+﻿@page "{id:int?}"
+@model EntidadeReserva.Pages.PacoteTuristicoDetailsModel
+
+@{
+    ViewData["Title"] = Model.Encontrado ? $"Detalhes - {Model.Pacote.Nome}" : "Pacote Não Encontrado";
+}
+
+@if (!Model.Encontrado)
+{
+    <div class="container mt-4">
+        <div class="alert alert-danger">
+            <h4>🚫 Pacote Não Encontrado</h4>
+            <p>O pacote turístico solicitado não foi encontrado em nosso sistema.</p>
+            <p class="mb-0">
+                <a asp-page="PacotesList" class="btn btn-primary">📋 Ver Todos os Pacotes</a>
+                <a asp-page="Index" class="btn btn-secondary">🏠 Página Inicial</a>
+            </p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container mt-4">
+        <!-- Cabeçalho -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="text-primary">@Model.Pacote.Nome</h2>
+                <p class="lead text-muted">@Model.Pacote.Destino</p>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-success fs-6">@Model.Pacote.Categoria</span>
+                <span class="badge bg-info fs-6">@Model.Pacote.Duracao dias</span>
+                <div class="mt-2">
+                    <span class="badge bg-warning text-dark fs-5">@Model.Pacote.PrecoFormatado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Informações Principais -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">📖 Descrição do Pacote</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text fs-6">@Model.Pacote.Descricao</p>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-map-marker-alt text-success me-2 fs-5"></i>
+                                    <div>
+                                        <strong>Destino</strong>
+                                        <p class="mb-0">@Model.Pacote.Destino</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-calendar-alt text-info me-2 fs-5"></i>
+                                    <div>
+                                        <strong>Duração</strong>
+                                        <p class="mb-0">@Model.Pacote.Duracao dias</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Serviços Incluídos -->
+                        <div class="mt-4">
+                            <strong>✅ Serviços Incluídos:</strong>
+                            <div class="mt-2">
+                                @if (Model.Pacote.IncluiPassagemAerea)
+                                {
+                                    <span class="badge bg-success me-2 mb-2">✈️ Passagem Aérea</span>
+                                }
+                                @if (Model.Pacote.IncluiTraslados)
+                                {
+                                    <span class="badge bg-success me-2 mb-2">🚗 Traslados</span>
+                                }
+                                @if (Model.Pacote.IncluiGuia)
+                                {
+                                    <span class="badge bg-success me-2 mb-2">🗣️ Guia Turístico</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações do Destino (se existir objeto complexo) -->
+                @if (Model.Pacote.Destino != null && !string.IsNullOrEmpty(Model.Pacote.Destino.Pais))
+                {
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">🌍 Informações do Destino</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>País:</strong>
+                                    <p>@Model.Pacote.Destino.Pais</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Cidade:</strong>
+                                    <p>@Model.Pacote.Destino.Cidade</p>
+                                </div>
+                            </div>
+                            @if (!string.IsNullOrEmpty(Model.Pacote.Destino.PontoTuristicoPrincipal))
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Ponto Turístico Principal:</strong>
+                                        <p class="fw-bold">@Model.Pacote.Destino.PontoTuristicoPrincipal</p>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Pacote.Destino.Descricao))
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Descrição:</strong>
+                                        <p>@Model.Pacote.Destino.Descricao</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Informações da Hospedagem (se existir objeto complexo) -->
+                @if (Model.Pacote.Hospedagem != null && !string.IsNullOrEmpty(Model.Pacote.Hospedagem.Nome))
+                {
+                    <div class="card mb-4">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">🏨 Informações da Hospedagem</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Nome:</strong>
+                                    <p>@Model.Pacote.Hospedagem.Nome</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Tipo:</strong>
+                                    <p>@Model.Pacote.Hospedagem.Tipo</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Classificação:</strong>
+                                    <p>@Model.Pacote.Hospedagem.Classificacao estrelas</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Café da Manhã:</strong>
+                                    <p>
+                                        @if (Model.Pacote.Hospedagem.IncluiCafeManha)
+                                        {
+                                            <span class="badge bg-success">✅ Incluído</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">❌ Não incluso</span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Sidebar com Informações Técnicas -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">📋 Informações do Pacote</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>🔖 ID do Pacote:</strong>
+                            <p class="mb-0">#@Model.Pacote.Id</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>📅 Data de Criação:</strong>
+                            <p class="mb-0">@Model.Pacote.DataCriacao.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>🏷️ Categoria:</strong>
+                            <p class="mb-0">@Model.Pacote.Categoria</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>📅 Validade:</strong>
+                            <p class="mb-0">@Model.Pacote.Validade.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>📊 Status:</strong>
+                            <p class="mb-0">
+                                @if (Model.Pacote.Ativo)
+                                {
+                                    <span class="badge bg-success">✅ Ativo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">❌ Inativo</span>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ações -->
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">🚀 Ações</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a asp-page="PacotesList" class="btn btn-outline-primary mb-2">
+                                📋 Voltar para Lista
+                            </a>
+                            <a asp-page="CreateReserva" asp-route-pacoteId="@Model.Pacote.Id"
+                               class="btn btn-success mb-2">
+                                🛒 Fazer Reserva
+                            </a>
+                            <a asp-page="EditPacoteTuristico" asp-route-id="@Model.Pacote.Id"
+                               class="btn btn-warning mb-2">
+                                ✏️ Editar Pacote
+                            </a>
+                            <button class="btn btn-info" onclick="compartilharPacote()">
+                                📤 Compartilhar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações da URL -->
+        <div class="mt-4 p-3 bg-light rounded">
+            <small class="text-muted">
+                <strong>URL desta página:</strong>
+                <code>/PacoteTuristicoDetails/@Model.Pacote.Id</code>
+                <br>
+                <strong>Parâmetro de rota:</strong> ID = @Model.Pacote.Id
+            </small>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        function compartilharPacote() {
+            const url = window.location.href;
+            const titulo = '@Model.Pacote?.Nome';
+
+            if (navigator.share) {
+                navigator.share({
+                    title: titulo,
+                    url: url
+                });
+            } else {
+                // Fallback para copiar URL
+                navigator.clipboard.writeText(url).then(function() {
+                    alert('URL copiada para a área de transferência!');
+                });
+            }
+        }
+
+        // Debug: mostra informações no console
+        console.log('Página de detalhes carregada');
+        console.log('Pacote encontrado:', @Model.Encontrado.ToString().ToLower());
+        @if (Model.Encontrado)
+        {
+                <text>
+                console.log('ID do pacote:', @Model.Pacote.Id);
+                console.log('Nome do pacote:', '@Model.Pacote.Nome');
+                </text>
+        }
+    </script>
+}

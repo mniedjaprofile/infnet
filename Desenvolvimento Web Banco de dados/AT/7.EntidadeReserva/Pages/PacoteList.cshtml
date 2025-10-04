@@ -1,0 +1,48 @@
+﻿@page
+@model EntidadeReserva.Pages.PacotesListModel
+
+@{
+    ViewData["Title"] = "Pacotes Turísticos";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="row">
+        @foreach (var pacote in Model.Pacotes)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@pacote.Nome</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            @pacote.Destino.Cidade, @pacote.Destino.Pais
+                        </h6>
+                        <p class="card-text">@pacote.Descricao</p>
+
+                        <div class="mb-3">
+                            <span class="badge bg-primary">@pacote.Categoria</span>
+                            <span class="badge bg-success">@pacote.Duracao dias</span>
+                            <span class="badge bg-info">@pacote.PrecoFormatado</span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <a asp-page="PacoteTuristicoDetails" asp-route-id="@pacote.Id"
+                               class="btn btn-outline-primary">
+                                📖 Ver Detalhes
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <small>ID: #@pacote.Id | Criado em: @pacote.DataCriacao.ToString("dd/MM/yyyy")</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <a asp-page="CreatePacoteTuristico" class="btn btn-success">➕ Novo Pacote</a>
+        <a asp-page="Index" class="btn btn-secondary">🏠 Página Inicial</a>
+    </div>
+</div>

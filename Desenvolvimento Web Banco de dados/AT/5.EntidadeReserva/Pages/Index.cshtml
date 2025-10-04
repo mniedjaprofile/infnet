@@ -1,0 +1,25 @@
+﻿@page
+@model EntidadeReserva.Pages.IndexModel
+@{
+    ViewData["Title"] = "Agência de Turismo";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Agência de Turismo</h1>
+    <p>Bem-vindo ao sistema de gerenciamento da agência!</p>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="mt-4">
+       
+        <a asp-page="CreateReserva" class="btn btn-primary me-2">Nova Reserva</a>
+        <a asp-page="CreatePacoteTuristico" class="btn btn-success">Novo Pacote Turístico</a>
+    </div>
+
+</div>
